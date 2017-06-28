@@ -256,6 +256,16 @@ void Tooltips::addStandardTooltips() {
             << tr("Adjusts the pre-fader microphone gain.")
             << QString("%1: %2").arg(rightClick, resetToDefault);
 
+    add("microphone_pregain2")
+            << tr("Microphone Gain 2")
+            << tr("Adjusts again the pre-fader microphone gain.")
+            << QString("%1: %2").arg(rightClick, resetToDefault);
+
+    add("microphone_aec")
+            << tr("Microphone AEC")
+            << tr("Hold-to-activate or short click for latching to")
+            << tr("mix microphone input Acoustic Echo Cancellation.");
+
     add("microphone_talkover")
             << tr("Microphone Talk-Over")
             << tr("Hold-to-talk or short click for latching to")

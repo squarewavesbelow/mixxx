@@ -57,10 +57,13 @@ class EngineMicrophone : public EngineChannel, public AudioDestination {
     EngineVuMeter m_vuMeter;
     QScopedPointer<ControlObject> m_pInputConfigured;
     ControlAudioTaperPot* m_pPregain;
+    ControlAudioTaperPot* m_pPregain2;
+    ControlPushButton* m_pAEC;
     ControlProxy* m_pSampleRate;
     const CSAMPLE* volatile m_sampleBuffer;
 
     bool m_wasActive;
+    bool m_wasActive2;
 };
 
 #endif /* ENGINEMICROPHONE_H */

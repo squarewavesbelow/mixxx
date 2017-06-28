@@ -19,7 +19,10 @@ EngineMicrophone::EngineMicrophone(const ChannelHandleAndGroup& handle_group,
           m_vuMeter(getGroup()),
           m_pInputConfigured(new ControlObject(ConfigKey(getGroup(), "input_configured"))),
           m_pPregain(new ControlAudioTaperPot(ConfigKey(getGroup(), "pregain"), -12, 12, 0.5)),
+          m_pPregain2(new ControlAudioTaperPot(ConfigKey(getGroup(), "pregain2"), -12, 12, 0.5)),
+          m_pAEC(new ControlPushButton(ConfigKey(getGroup(), "aec_state"), false)),
           m_sampleBuffer(NULL),
+          m_wasActive2(false),
           m_wasActive(false) {
     if (pEffectsManager != NULL) {
         pEffectsManager->registerChannel(handle_group);
@@ -38,6 +41,8 @@ EngineMicrophone::EngineMicrophone(const ChannelHandleAndGroup& handle_group,
 EngineMicrophone::~EngineMicrophone() {
     delete m_pSampleRate;
     delete m_pPregain;
+    delete m_pPregain2;
+    delete m_pAEC;
 }
 
 bool EngineMicrophone::isActive() {
@@ -83,8 +88,14 @@ void EngineMicrophone::process(CSAMPLE* pOut, const int iBufferSize) {
     // Otherwise, skip the appropriate number of samples to throw them away.
     const CSAMPLE* sampleBuffer = m_sampleBuffer; // save pointer on stack
     double pregain =  m_pPregain->get();
+    double pregain2 =  m_pPregain2->get();
+    double aec_state = m_pAEC->get();
+    if (aec_state) {
+        qDebug()  << "AEC test" << aec_state;
+    }
     if (sampleBuffer) {
         SampleUtil::copyWithGain(pOut, sampleBuffer, pregain, iBufferSize);
+        SampleUtil::copyWithGain(pOut, pOut, pregain2, iBufferSize);
     } else {
         SampleUtil::clear(pOut, iBufferSize);
     }
