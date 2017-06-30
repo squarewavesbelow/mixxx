@@ -1,0 +1,59 @@
+<!DOCTYPE template>
+<!--
+  Description:
+    A set of controls for microphone speexdsp processing frontend.
+    (Acoustic echo cancellation, noise/reverb suppression and AGC)
+  Variables:
+-->
+<Template>
+
+
+  <WidgetGroup>
+    <ObjectName>MicrophoneSpeexContainer</ObjectName>
+    <Layout>horizontal</Layout>
+    <SizePolicy>max,max</SizePolicy>
+    <Children>
+
+      <Template src="skin:left_2state_button.xml">
+        <SetVariable name="TooltipId"><Variable name="TooltipId"/></SetVariable>
+        <SetVariable name="ObjectName">MicrophoneTalkoverButton</SetVariable>
+        <SetVariable name="MinimumSize"><Variable name="WideButtonMinimumSize"/></SetVariable>
+        <SetVariable name="MaximumSize"><Variable name="WideButtonMaximumSize"/></SetVariable>
+        <SetVariable name="SizePolicy"><Variable name="WideButtonSizePolicy"/></SetVariable>
+        <SetVariable name="state_0_text"><Variable name="talk_text"/>AEC</SetVariable>
+        <SetVariable name="state_1_text"><Variable name="talk_text"/>AEC</SetVariable>
+        <SetVariable name="left_connection_control"><Variable name="group"/>,aec_state</SetVariable>
+      </Template>
+    
+      <Template src="skin:knob_with_button.xml">
+        <SetVariable name="TooltipId">microphone_noise_suppress</SetVariable>
+        <SetVariable name="control">denoise_db</SetVariable>
+        <SetVariable name="color">red</SetVariable>
+        <SetVariable name="button_TooltipId">denoise_sw</SetVariable>
+        <SetVariable name="button_control">denoise_state</SetVariable>
+        <SetVariable name="label">noise</SetVariable>
+      </Template>
+    
+      <Template src="skin:knob_with_button.xml">
+        <SetVariable name="TooltipId">microphone_reverb_suppress</SetVariable>
+        <SetVariable name="control">dereverb_db</SetVariable>
+        <SetVariable name="color">red</SetVariable>
+        <SetVariable name="button_TooltipId">dereverb_sw</SetVariable>
+        <SetVariable name="button_control">dereverb_state</SetVariable>
+        <SetVariable name="label">room</SetVariable>
+      </Template>
+    
+      <Template src="skin:knob_with_button.xml">
+        <SetVariable name="TooltipId">microphone_agc</SetVariable>
+        <SetVariable name="control">agc_level</SetVariable>
+        <SetVariable name="color">red</SetVariable>
+        <SetVariable name="button_TooltipId">agc_sw</SetVariable>
+        <SetVariable name="button_control">agc_state</SetVariable>
+        <SetVariable name="label">AGC</SetVariable>
+      </Template>
+
+
+    </Children>
+  </WidgetGroup> 
+
+</Template>

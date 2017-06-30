@@ -39,21 +39,9 @@
             <SetVariable name="label">Gain</SetVariable>
           </Template>
 
-
-          <Template src="skin:knob_with_button.xml">
-            <SetVariable name="TooltipId">microphone_pregain2</SetVariable>
-            <SetVariable name="control">pregain2</SetVariable>
-            <SetVariable name="color">red</SetVariable>
-            <SetVariable name="button_TooltipId">mute</SetVariable>
-            <SetVariable name="button_control">mute</SetVariable>
-            <SetVariable name="label">Gain</SetVariable>
-          </Template>
-
-          <Template src="skin:microphone_aec_button.xml">
+          <Template src="skin:microphone_speex_mod.xml">
                     <SetVariable name="TooltipId">microphone_aec</SetVariable>
-                    <SetVariable name="talk_text">AEC</SetVariable>
           </Template>
-
 
           <WidgetGroup>
             <ObjectName>MicrophoneButtonsAndMeter</ObjectName>

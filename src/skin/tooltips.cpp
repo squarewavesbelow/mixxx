@@ -256,9 +256,19 @@ void Tooltips::addStandardTooltips() {
             << tr("Adjusts the pre-fader microphone gain.")
             << QString("%1: %2").arg(rightClick, resetToDefault);
 
-    add("microphone_pregain2")
-            << tr("Microphone Gain 2")
-            << tr("Adjusts again the pre-fader microphone gain.")
+    add("microphone_noise_suppress")
+            << tr("microphone_noise_suppress")
+            << tr("Adjusts microphone_noise_suppress in db.")
+            << QString("%1: %2").arg(rightClick, resetToDefault);
+
+    add("microphone_reverb_suppress")
+            << tr("microphone_reverb_suppress")
+            << tr("Adjusts microphone_reverb_suppress in -db.")
+            << QString("%1: %2").arg(rightClick, resetToDefault);
+
+    add("microphone_agc")
+            << tr("microphone_agc")
+            << tr("Adjusts microphone_agc level.")
             << QString("%1: %2").arg(rightClick, resetToDefault);
 
     add("microphone_aec")
